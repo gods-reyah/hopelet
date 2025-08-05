@@ -4,13 +4,42 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HOPELET</title>
+    <title>Hopelet</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Romantic Font -->
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+
+    <!-- Firebase Initialization (Global) -->
+    <script type="module">
+        // Import Firebase SDK (modular)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+        import {
+            getFirestore, doc, getDoc, updateDoc, increment
+        } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
+
+        // Your Firebase config (replace with real values)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCIF88o3yshlQsyWfD31UdP800nzs8SDLw",
+            authDomain: "hopelet-e459d.firebaseapp.com",
+            projectId: "hopelet-e459d",
+            storageBucket: "hopelet-e459d.firebasestorage.app",
+            messagingSenderId: "379401277653",
+            appId: "1:379401277653:web:1cea62d45fb76c3c48125c",
+            measurementId: "G-G8Y9KZLLPK"
+        };
+
+        // Initialize Firebase only once
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // ✅ Make available to all scripts
+        window.db = db;
+        window.firebaseFns = { doc, getDoc, updateDoc, increment };
+    </script>
+
 
 
     <style>
@@ -166,30 +195,111 @@
         <div class="hidden md:grid grid-cols-2 gap-6 p-6 h-full">
             <!-- Friend's Panel -->
             <div
-                class="rounded-3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-lg">
-                Melna
+                class="rounded-3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-black shadow-lg">
+                <div class="grid gap-4 w-full h-full p-4
+                            grid-cols-4 grid-rows-6
+                            md:grid-cols-6 md:grid-rows-4">
+
+                    <!-- Replace your old image-count card with this new card -->
+                    <div class="bg-white rounded-2xl shadow-md col-span-3 row-span-2 font-sans">
+                        <div id="count-card"
+                            class="bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full max-w-xs hover:shadow-xl transition-shadow duration-300 cursor-pointer relative">
+
+                            <!-- Image / Plus Icon Wrapper -->
+                            <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                                <img id="card-image" src="./img/1.jpg" alt="icon"
+                                    class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+
+                                <!-- Plus Icon -->
+                                <svg id="plus-icon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </div>
+
+                            <!-- Count -->
+                            <div class="flex flex-1 items-center justify-center">
+                                <!-- Spinner (hidden by default) -->
+                                <div id="count-loading" class="hidden flex justify-center items-center">
+                                    <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                    </svg>
+                                </div>
+
+                                <!-- Actual Count -->
+                                <span id="count-value" class="text-white text-5xl font-bold">0</span>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
             <!-- My Panel -->
             <div
                 class="rounded-3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-lg">
-                Abhi
+
             </div>
         </div>
 
         <!-- Mobile layout: one panel at a time -->
-        <div class="md:hidden relative h-screen flex items-center justify-center">
+        <div class="md:hidden relative h-screen overflow-hidden">
             <div id="mobilePanels" class="w-full h-full flex transition-transform duration-500 ease-in-out">
-                <div
-                    class="min-w-full -3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-lg">
-                    Abhi
+
+                <!-- Panel 1: Friend's Panel -->
+                <div class="min-w-full p-4 bg-gradient-to-br from-pink-400 to-purple-500 flex flex-col">
+
+                    <!-- Counter Card (Top & Wide like Desktop) -->
+                    <div id="count-card-mobile"
+                        class="bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative mt-4">
+
+                        <!-- Image / Plus Icon Wrapper -->
+                        <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                            <img id="card-image-mobile" src="./img/1.jpg" alt="icon"
+                                class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+
+                            <!-- Plus Icon -->
+                            <svg id="plus-icon-mobile" xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+
+                        <!-- Count -->
+                        <div class="flex flex-1 items-center justify-center">
+                            <!-- Spinner -->
+                            <div id="count-loading-mobile" class="hidden flex justify-center items-center">
+                                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4">
+                                    </circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                </svg>
+                            </div>
+                            <!-- Actual Count -->
+                            <span id="count-value-mobile" class="text-white text-5xl font-bold">0</span>
+                        </div>
+                    </div>
+
                 </div>
-                <div
-                    class="min-w-full -3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-lg">
-                    Melna
+
+                <!-- Panel 2 -->
+                <div class="min-w-full flex items-center justify-center bg-gradient-to-br from-pink-400 to-purple-500">
+                    <span class="text-white text-2xl font-bold">Melna</span>
                 </div>
             </div>
 
-            <!-- Navigation buttons on sides -->
+            <!-- Navigation buttons -->
             <button id="prevBtn"
                 class="absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer arrow-bounce text-white opacity-80 hover:opacity-100 transition"
                 aria-label="Previous Section">
@@ -207,8 +317,9 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
-
         </div>
+
+
 
     </section>
 
@@ -284,6 +395,111 @@
             updatePanels();
         });
     </script>
+    <script type="module">
+        const { doc, getDoc, updateDoc } = window.firebaseFns;
+
+        function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName) {
+            const card = document.getElementById(cardId);
+            const image = document.getElementById(imageId);
+            const plusIcon = document.getElementById(plusIconId);
+            const loadingSpinner = document.getElementById(loadingId);
+            const countValue = document.getElementById(valueId);
+
+            if (!card) return; // Skip if element not present
+
+            let count = 0;
+
+            function showLoading() {
+                loadingSpinner.classList.remove("hidden");
+                countValue.classList.add("hidden");
+            }
+
+            function showCount(value) {
+                countValue.textContent = value;
+                loadingSpinner.classList.add("hidden");
+                countValue.classList.remove("hidden");
+            }
+
+            function setCountColor(color) {
+                countValue.style.color = color;
+            }
+
+            // Show loading initially
+            showLoading();
+
+            // Load from Local Storage first
+            if (localStorage.getItem(localKey)) {
+                count = parseInt(localStorage.getItem(localKey), 10);
+                showCount(count);
+            }
+
+            // Load from Firebase
+            async function loadFromFirebase() {
+                const ref = doc(window.db, "abhi", firebaseDocName);
+                try {
+                    const snapshot = await getDoc(ref);
+                    if (snapshot.exists()) {
+                        count = snapshot.data().value || 0;
+                        localStorage.setItem(localKey, count);
+                        showCount(count);
+                    } else {
+                        showCount(0);
+                    }
+                } catch (err) {
+                    console.error("Error fetching from Firebase:", err);
+                    showCount(count || 0);
+                }
+            }
+            loadFromFirebase();
+
+            // Save to Firebase
+            async function saveToFirebase(newCount) {
+                const ref = doc(window.db, "abhi", firebaseDocName);
+                try {
+                    await updateDoc(ref, { value: newCount });
+                    setCountColor("#34D399"); // green flash
+                    setTimeout(() => setCountColor("white"), 1000);
+                } catch (err) {
+                    console.error("Error saving to Firebase:", err);
+                    setCountColor("red"); // error red
+                }
+            }
+
+            // Hover effects (only for devices with mouse)
+            if (window.matchMedia("(hover: hover)").matches) {
+                card.addEventListener("mouseenter", () => {
+                    image.style.opacity = "0.2";
+                    plusIcon.style.opacity = "1";
+                });
+                card.addEventListener("mouseleave", () => {
+                    image.style.opacity = "1";
+                    plusIcon.style.opacity = "0";
+                });
+            }
+
+            // Click → increment
+            card.addEventListener("click", () => {
+                count++;
+                showCount(count);
+                localStorage.setItem(localKey, count);
+                setCountColor("#F59E0B"); // orange flash
+                saveToFirebase(count);
+            });
+        }
+
+        // Use the SAME key & doc for both desktop and mobile
+        const sharedLocalKey = "holy_mass_count";
+        const sharedFirebaseDoc = "holy mass";
+
+        // Setup desktop and mobile with shared storage
+        setupCounter("count-card", "card-image", "plus-icon", "count-loading", "count-value", sharedLocalKey, sharedFirebaseDoc);
+        setupCounter("count-card-mobile", "card-image-mobile", "plus-icon-mobile", "count-loading-mobile", "count-value-mobile", sharedLocalKey, sharedFirebaseDoc);
+    </script>
+
+
+
+
+
 
 
 
