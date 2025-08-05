@@ -784,6 +784,7 @@
             if (!card || !plusIcon) return;
 
             let count = 0;
+            let mobileFirstTap = true;
 
             function showLoading() {
                 loadingSpinner.classList.remove("hidden");
@@ -862,18 +863,34 @@
                     saveToFirebase(count);
                 });
             }
-            // Mobile/touch devices
+            // Mobile/touch devices (two-tap logic like Abhi)
             else {
                 plusIcon.addEventListener("click", (event) => {
                     event.stopPropagation();
-                    count++;
-                    showCount(count);
-                    localStorage.setItem(localKey, count);
-                    setCountColor("#F59E0B");
-                    saveToFirebase(count);
+                    if (mobileFirstTap) {
+                        // First tap: show plus icon only
+                        image.style.opacity = "0.2";
+                        plusIcon.style.opacity = "1";
+                        mobileFirstTap = false;
 
-                    image.style.opacity = "1";
-                    plusIcon.style.opacity = "0";
+                        // Reset after 3 seconds if no second tap
+                        setTimeout(() => {
+                            image.style.opacity = "1";
+                            plusIcon.style.opacity = "0";
+                            mobileFirstTap = true;
+                        }, 3000);
+                    } else {
+                        // Second tap: increment
+                        count++;
+                        showCount(count);
+                        localStorage.setItem(localKey, count);
+                        setCountColor("#F59E0B");
+                        saveToFirebase(count);
+
+                        image.style.opacity = "1";
+                        plusIcon.style.opacity = "0";
+                        mobileFirstTap = true;
+                    }
                 });
             }
         }
@@ -900,6 +917,7 @@
             "melna"
         );
     </script>
+
     <script type="module">
         const { doc, getDoc, updateDoc } = window.firebaseFns;
         const db = window.db;
@@ -1180,6 +1198,13 @@
             "melna"                            // Firestore collection name
         );
     </script>
+
+
+
+
+
+
+
 </body>
 
 </html>
