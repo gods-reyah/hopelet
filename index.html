@@ -193,19 +193,28 @@
 
         <!-- Desktop layout: two side-by-side panels -->
         <div class="hidden md:grid grid-cols-2 gap-6 p-6 h-full">
-            <!-- Friend's Panel -->
+
+            <!-- Abhi's Panel -->
             <div
-                class="rounded-3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-black shadow-lg">
-                <div class="grid gap-4 w-full h-full p-4
-                            grid-cols-4 grid-rows-6
-                            md:grid-cols-6 md:grid-rows-4">
+                class="rounded-3xl p-8 flex flex-col gap-6 items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-black shadow-lg">
 
-                    <!-- Replace your old image-count card with this new card -->
-                    <div class="bg-white rounded-2xl shadow-md col-span-3 row-span-2 font-sans">
+                <!-- Abhi Box at Top -->
+                <div class="w-full">
+                    <div
+                        class="bg-gradient-to-r from-yellow-500 to-orange-100 rounded-2xl shadow-lg flex items-center justify-center px-6 py-4 w-full">
+                        <span class="text-Black text-3xl font-bold">Abhi</span>
+                    </div>
+                </div>
+
+                <!-- Counter Cards Row -->
+                <div class="flex flex-col md:flex-row gap-6 w-full">
+
+                    <!-- First Counter Card -->
+                    <div class="flex-1 bg-white rounded-2xl shadow-md font-sans">
                         <div id="count-card"
-                            class="bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full max-w-xs hover:shadow-xl transition-shadow duration-300 cursor-pointer relative">
+                            class="bg-gradient-to-r from-purple-600 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full h-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative">
 
-                            <!-- Image / Plus Icon Wrapper -->
+                            <!-- Image -->
                             <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
                                 <img id="card-image" src="./img/1.jpg" alt="icon"
                                     class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
@@ -220,21 +229,145 @@
 
                             <!-- Count -->
                             <div class="flex flex-1 items-center justify-center">
-                                <!-- Spinner (hidden by default) -->
+                                <!-- Spinner -->
                                 <div id="count-loading" class="hidden flex justify-center items-center">
                                     <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 24 24">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                            stroke-width="4"></circle>
+                                            stroke-width="4">
+                                        </circle>
                                         <path class="opacity-75" fill="currentColor"
                                             d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
                                     </svg>
                                 </div>
-
-                                <!-- Actual Count -->
                                 <span id="count-value" class="text-white text-5xl font-bold">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rosary Counter Card -->
+                    <div class="flex-1 bg-white rounded-2xl shadow-md font-sans">
+                        <div id="rosary-count-card"
+                            class="bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full h-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative">
+
+                            <!-- Image -->
+                            <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                                <img id="rosary-card-image" src="./img/2.jpg" alt="Rosary"
+                                    class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+
+                                <!-- Plus Icon -->
+                                <svg id="rosary-plus-icon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </div>
+
+                            <!-- Count -->
+                            <div class="flex flex-1 items-center justify-center">
+                                <!-- Spinner -->
+                                <div id="rosary-count-loading" class="hidden flex justify-center items-center">
+                                    <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            stroke-width="4">
+                                        </circle>
+                                        <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                    </svg>
+                                </div>
+                                <span id="rosary-count-value" class="text-white text-5xl font-bold">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
+
+            <!-- Melna's Panel -->
+            <div
+                class="rounded-3xl p-8 flex flex-col gap-6 items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-black shadow-lg">
+
+                <!-- Melna Header -->
+                <div class="w-full">
+                    <div
+                        class="bg-gradient-to-r from-yellow-500 to-orange-100 rounded-2xl shadow-lg flex items-center justify-center px-6 py-4 w-full">
+                        <span class="text-black text-3xl font-bold">Melna</span>
+                    </div>
+                </div>
+
+                <!-- Counter Cards Row -->
+                <div class="flex flex-col md:flex-row gap-6 w-full">
+
+                    <!-- Melna Counter Card -->
+                    <div class="flex-1 bg-white rounded-2xl shadow-md font-sans">
+                        <div id="melna-count-card"
+                            class="bg-gradient-to-r from-purple-600 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full h-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative">
+
+                            <!-- Image -->
+                            <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                                <img id="melna-card-image" src="./img/1.jpg" alt="Melna"
+                                    class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+
+                                <!-- Plus Icon -->
+                                <svg id="melna-plus-icon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </div>
+
+                            <!-- Count -->
+                            <div class="flex flex-1 items-center justify-center">
+                                <!-- Spinner -->
+                                <div id="melna-count-loading" class="hidden flex justify-center items-center">
+                                    <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            stroke-width="4">
+                                        </circle>
+                                        <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                    </svg>
+                                </div>
+                                <span id="melna-count-value" class="text-white text-5xl font-bold">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Melna Rosary Counter Card -->
+                    <div class="flex-1 bg-white rounded-2xl shadow-md font-sans">
+                        <div id="melna-rosary-count-card"
+                            class="bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full h-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative">
+
+                            <!-- Image -->
+                            <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                                <img id="melna-rosary-card-image" src="./img/2.jpg" alt="Rosary"
+                                    class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+
+                                <!-- Plus Icon -->
+                                <svg id="melna-rosary-plus-icon" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                            </div>
+
+                            <!-- Count -->
+                            <div class="flex flex-1 items-center justify-center">
+                                <!-- Spinner -->
+                                <div id="melna-rosary-count-loading" class="hidden flex justify-center items-center">
+                                    <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            stroke-width="4">
+                                        </circle>
+                                        <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                    </svg>
+                                </div>
+                                <span id="melna-rosary-count-value" class="text-white text-5xl font-bold">0</span>
                             </div>
                         </div>
                     </div>
@@ -242,29 +375,34 @@
                 </div>
             </div>
 
-            <!-- My Panel -->
-            <div
-                class="rounded-3xl p-8 flex items-center justify-center text-2xl font-bold bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-lg">
 
-            </div>
+
         </div>
 
         <!-- Mobile layout: one panel at a time -->
         <div class="md:hidden relative h-screen overflow-hidden">
+
+            <!-- Wrapper for panels -->
             <div id="mobilePanels" class="w-full h-full flex transition-transform duration-500 ease-in-out">
 
-                <!-- Panel 1: Friend's Panel -->
+                <!-- Panel 1: Abhi's Panel -->
                 <div class="min-w-full p-4 bg-gradient-to-br from-pink-400 to-purple-500 flex flex-col">
+                    <!-- Abhi Box at Top -->
+                    <div class="w-full">
+                        <div
+                            class="bg-gradient-to-r from-yellow-500 to-orange-100 rounded-2xl shadow-lg flex items-center justify-center px-6 py-4 w-full">
+                            <span class="text-black text-3xl font-bold">Abhi</span>
+                        </div>
+                    </div>
 
-                    <!-- Counter Card (Top & Wide like Desktop) -->
+                    <!-- Holy Mass Counter Card (Mobile) -->
                     <div id="count-card-mobile"
                         class="bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative mt-4">
 
                         <!-- Image / Plus Icon Wrapper -->
                         <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
-                            <img id="card-image-mobile" src="./img/1.jpg" alt="icon"
+                            <img id="card-image-mobile" src="./img/1.jpg" alt="Holy Mass"
                                 class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
-
                             <!-- Plus Icon -->
                             <svg id="plus-icon-mobile" xmlns="http://www.w3.org/2000/svg"
                                 class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
@@ -275,7 +413,6 @@
 
                         <!-- Count -->
                         <div class="flex flex-1 items-center justify-center">
-                            <!-- Spinner -->
                             <div id="count-loading-mobile" class="hidden flex justify-center items-center">
                                 <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24">
@@ -286,22 +423,113 @@
                                         d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
                                 </svg>
                             </div>
-                            <!-- Actual Count -->
                             <span id="count-value-mobile" class="text-white text-5xl font-bold">0</span>
                         </div>
                     </div>
 
+                    <!-- Rosary Counter Card (Mobile) -->
+                    <div id="rosary-count-card-mobile"
+                        class="bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full hover:shadow-xl transition-shadow duration-300 cursor-pointer relative mt-4">
+
+                        <!-- Image / Plus Icon Wrapper -->
+                        <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                            <img id="rosary-card-image-mobile" src="./img/2.jpg" alt="Rosary"
+                                class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+                            <!-- Plus Icon -->
+                            <svg id="rosary-plus-icon-mobile" xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+
+                        <!-- Count -->
+                        <div class="flex flex-1 items-center justify-center">
+                            <div id="rosary-count-loading-mobile" class="hidden flex justify-center items-center">
+                                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4">
+                                    </circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                </svg>
+                            </div>
+                            <span id="rosary-count-value-mobile" class="text-white text-5xl font-bold">0</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Panel 2 -->
-                <div class="min-w-full flex items-center justify-center bg-gradient-to-br from-pink-400 to-purple-500">
-                    <span class="text-white text-2xl font-bold">Melna</span>
+                <!-- Panel 2: Melna's Panel -->
+                <div class="min-w-full p-4 bg-gradient-to-br from-pink-400 to-purple-500 flex flex-col">
+                    <div class="w-full">
+                        <div
+                            class="bg-gradient-to-r from-yellow-500 to-orange-100 rounded-2xl shadow-lg flex items-center justify-center px-6 py-4 w-full">
+                            <span class="text-black text-3xl font-bold">Melna</span>
+                        </div>
+                    </div>
+
+                    <!-- Holy Mass Counter -->
+                    <div id="melna-count-card-mobile"
+                        class="bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full hover:shadow-xl transition-shadow duration-300 cursor-pointer mt-4 relative">
+                        <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                            <img id="melna-card-image-mobile" src="./img/1.jpg" alt="Holy Mass"
+                                class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+                            <svg id="melna-plus-icon-mobile" xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-1 items-center justify-center">
+                            <div id="melna-count-loading-mobile" class="hidden flex justify-center items-center">
+                                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4">
+                                    </circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                </svg>
+                            </div>
+                            <span id="melna-count-value-mobile" class="text-white text-5xl font-bold">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Rosary Counter -->
+                    <div id="melna-rosary-count-card-mobile"
+                        class="bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl shadow-lg flex items-center px-4 py-3 w-full hover:shadow-xl transition-shadow duration-300 cursor-pointer mt-4 relative">
+                        <div class="flex-shrink-0 flex items-center justify-center relative w-20 h-20">
+                            <img id="melna-rosary-card-image-mobile" src="./img/2.jpg" alt="Rosary"
+                                class="w-20 h-20 rounded-xl object-cover shadow-sm transition-opacity duration-300">
+                            <svg id="melna-rosary-plus-icon-mobile" xmlns="http://www.w3.org/2000/svg"
+                                class="h-10 w-10 text-white absolute opacity-0 transition-opacity duration-300"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-1 items-center justify-center">
+                            <div id="melna-rosary-count-loading-mobile" class="hidden flex justify-center items-center">
+                                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4">
+                                    </circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"></path>
+                                </svg>
+                            </div>
+                            <span id="melna-rosary-count-value-mobile" class="text-white text-5xl font-bold">0</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Navigation buttons -->
+        <!-- Navigation buttons OUTSIDE panels -->
+        <div class="md:hidden pointer-events-none">
             <button id="prevBtn"
-                class="absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer arrow-bounce text-white opacity-80 hover:opacity-100 transition"
+                class="absolute left-0 top-[85%] -translate-y-1/2 cursor-pointer arrow-bounce text-white opacity-80 hover:opacity-100 transition z-20 pointer-events-auto"
                 aria-label="Previous Section">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
@@ -310,7 +538,7 @@
             </button>
 
             <button id="nextBtn"
-                class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer arrow-bounce text-white opacity-80 hover:opacity-100 transition"
+                class="absolute right-0 top-[85%] -translate-y-1/2 cursor-pointer arrow-bounce text-white opacity-80 hover:opacity-100 transition z-20 pointer-events-auto"
                 aria-label="Next Section">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
@@ -318,6 +546,7 @@
                 </svg>
             </button>
         </div>
+
 
 
 
@@ -396,149 +625,561 @@
         });
     </script>
     <script type="module">
-    const { doc, getDoc, updateDoc } = window.firebaseFns;
+        const { doc, getDoc, updateDoc } = window.firebaseFns;
 
-    function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName) {
-        const card = document.getElementById(cardId);
-        const image = document.getElementById(imageId);
-        const plusIcon = document.getElementById(plusIconId);
-        const loadingSpinner = document.getElementById(loadingId);
-        const countValue = document.getElementById(valueId);
+        function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName, collectionName) {
+            const card = document.getElementById(cardId);
+            const image = document.getElementById(imageId);
+            const plusIcon = document.getElementById(plusIconId);
+            const loadingSpinner = document.getElementById(loadingId);
+            const countValue = document.getElementById(valueId);
 
-        if (!card) return;
+            if (!card || !plusIcon) return;
 
-        let count = 0;
-        let mobileFirstTap = true; // for mobile: first tap shows plus, second tap increments
+            let count = 0;
+            let mobileFirstTap = true;
 
-        function showLoading() {
-            loadingSpinner.classList.remove("hidden");
-            countValue.classList.add("hidden");
-        }
-
-        function showCount(value) {
-            countValue.textContent = value;
-            loadingSpinner.classList.add("hidden");
-            countValue.classList.remove("hidden");
-        }
-
-        function setCountColor(color) {
-            countValue.style.color = color;
-        }
-
-        // Show loading initially
-        showLoading();
-
-        // Load from Local Storage
-        if (localStorage.getItem(localKey)) {
-            count = parseInt(localStorage.getItem(localKey), 10);
-            showCount(count);
-        }
-
-        // Load from Firebase
-        async function loadFromFirebase() {
-            const ref = doc(window.db, "abhi", firebaseDocName);
-            try {
-                const snapshot = await getDoc(ref);
-                if (snapshot.exists()) {
-                    count = snapshot.data().value || 0;
-                    localStorage.setItem(localKey, count);
-                    showCount(count);
-                } else {
-                    showCount(0);
-                }
-            } catch (err) {
-                console.error("Error fetching from Firebase:", err);
-                showCount(count || 0);
+            function showLoading() {
+                loadingSpinner.classList.remove("hidden");
+                countValue.classList.add("hidden");
             }
-        }
-        loadFromFirebase();
 
-        // Save to Firebase
-        async function saveToFirebase(newCount) {
-            const ref = doc(window.db, "abhi", firebaseDocName);
-            try {
-                await updateDoc(ref, { value: newCount });
-                setCountColor("#34D399"); // green flash
-                setTimeout(() => setCountColor("white"), 1000);
-            } catch (err) {
-                console.error("Error saving to Firebase:", err);
-                setCountColor("red");
+            function showCount(value) {
+                countValue.textContent = value;
+                loadingSpinner.classList.add("hidden");
+                countValue.classList.remove("hidden");
             }
-        }
 
-        // Hover effects for desktop
-        if (window.matchMedia("(hover: hover)").matches) {
-            card.addEventListener("mouseenter", () => {
-                image.style.opacity = "0.2";
-                plusIcon.style.opacity = "1";
-            });
-            card.addEventListener("mouseleave", () => {
-                image.style.opacity = "1";
-                plusIcon.style.opacity = "0";
-            });
+            function setCountColor(color) {
+                countValue.style.color = color;
+            }
 
-            // Desktop click → increment immediately
-            card.addEventListener("click", () => {
-                count++;
+            // Show loading initially
+            showLoading();
+
+            // Load from Local Storage
+            if (localStorage.getItem(localKey)) {
+                count = parseInt(localStorage.getItem(localKey), 10);
                 showCount(count);
-                localStorage.setItem(localKey, count);
-                setCountColor("#F59E0B");
-                saveToFirebase(count);
-            });
-        } 
-        // Touch devices (mobile/tablet)
-        else {
-            card.addEventListener("click", () => {
-                if (mobileFirstTap) {
-                    // First tap: show plus without increment
+            }
+
+            // Load from Firebase
+            async function loadFromFirebase() {
+                const ref = doc(window.db, collectionName, firebaseDocName);
+                try {
+                    const snapshot = await getDoc(ref);
+                    if (snapshot.exists()) {
+                        count = snapshot.data().value || 0;
+                        localStorage.setItem(localKey, count);
+                        showCount(count);
+                    } else {
+                        showCount(0);
+                    }
+                } catch (err) {
+                    console.error("Error fetching from Firebase:", err);
+                    showCount(count || 0);
+                }
+            }
+            loadFromFirebase();
+
+            // Save to Firebase
+            async function saveToFirebase(newCount) {
+                const ref = doc(window.db, collectionName, firebaseDocName);
+                try {
+                    await updateDoc(ref, { value: newCount });
+                    setCountColor("#34D399"); // green flash
+                    setTimeout(() => setCountColor("white"), 1000);
+                } catch (err) {
+                    console.error("Error saving to Firebase:", err);
+                    setCountColor("red");
+                }
+            }
+
+            // Desktop hover effects
+            if (window.matchMedia("(hover: hover)").matches) {
+                card.addEventListener("mouseenter", () => {
                     image.style.opacity = "0.2";
                     plusIcon.style.opacity = "1";
-                    mobileFirstTap = false;
+                });
+                card.addEventListener("mouseleave", () => {
+                    image.style.opacity = "1";
+                    plusIcon.style.opacity = "0";
+                });
 
-                    // Hide plus if they don't click again within 3 sec
-                    setTimeout(() => {
+                // Increment only when clicking the plus icon
+                plusIcon.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    count++;
+                    showCount(count);
+                    localStorage.setItem(localKey, count);
+                    setCountColor("#F59E0B");
+                    saveToFirebase(count);
+                });
+            }
+            // Mobile/touch devices
+            else {
+                plusIcon.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    if (mobileFirstTap) {
+                        // First tap: just show plus icon (already visible on tap)
+                        image.style.opacity = "0.2";
+                        plusIcon.style.opacity = "1";
+                        mobileFirstTap = false;
+
+                        setTimeout(() => {
+                            image.style.opacity = "1";
+                            plusIcon.style.opacity = "0";
+                            mobileFirstTap = true;
+                        }, 3000);
+                    } else {
+                        // Second tap: increment
+                        count++;
+                        showCount(count);
+                        localStorage.setItem(localKey, count);
+                        setCountColor("#F59E0B");
+                        saveToFirebase(count);
+
                         image.style.opacity = "1";
                         plusIcon.style.opacity = "0";
                         mobileFirstTap = true;
-                    }, 3000);
-                } else {
-                    // Second tap: increment
+                    }
+                });
+            }
+        }
+
+        // Abhi's counters
+        setupCounter(
+            "count-card",
+            "card-image",
+            "plus-icon",
+            "count-loading",
+            "count-value",
+            "holy_mass_count",
+            "holy mass",
+            "abhi"
+        );
+        setupCounter(
+            "count-card-mobile",
+            "card-image-mobile",
+            "plus-icon-mobile",
+            "count-loading-mobile",
+            "count-value-mobile",
+            "holy_mass_count",
+            "holy mass",
+            "abhi"
+        );
+
+    </script>
+
+    <script type="module">
+        const { doc, getDoc, updateDoc } = window.firebaseFns;
+
+        function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName, collectionName) {
+            const card = document.getElementById(cardId);
+            const image = document.getElementById(imageId);
+            const plusIcon = document.getElementById(plusIconId);
+            const loadingSpinner = document.getElementById(loadingId);
+            const countValue = document.getElementById(valueId);
+
+            if (!card || !plusIcon) return;
+
+            let count = 0;
+
+            function showLoading() {
+                loadingSpinner.classList.remove("hidden");
+                countValue.classList.add("hidden");
+            }
+
+            function showCount(value) {
+                countValue.textContent = value;
+                loadingSpinner.classList.add("hidden");
+                countValue.classList.remove("hidden");
+            }
+
+            function setCountColor(color) {
+                countValue.style.color = color;
+            }
+
+            // Show loading initially
+            showLoading();
+
+            // Load from Local Storage
+            if (localStorage.getItem(localKey)) {
+                count = parseInt(localStorage.getItem(localKey), 10);
+                showCount(count);
+            }
+
+            // Load from Firebase
+            async function loadFromFirebase() {
+                const ref = doc(window.db, collectionName, firebaseDocName);
+                try {
+                    const snapshot = await getDoc(ref);
+                    if (snapshot.exists()) {
+                        count = snapshot.data().value || 0;
+                        localStorage.setItem(localKey, count);
+                        showCount(count);
+                    } else {
+                        showCount(0);
+                    }
+                } catch (err) {
+                    console.error("Error fetching from Firebase:", err);
+                    showCount(count || 0);
+                }
+            }
+            loadFromFirebase();
+
+            // Save to Firebase
+            async function saveToFirebase(newCount) {
+                const ref = doc(window.db, collectionName, firebaseDocName);
+                try {
+                    await updateDoc(ref, { value: newCount });
+                    setCountColor("#34D399"); // green flash
+                    setTimeout(() => setCountColor("white"), 1000);
+                } catch (err) {
+                    console.error("Error saving to Firebase:", err);
+                    setCountColor("red");
+                }
+            }
+
+            // Desktop hover effects
+            if (window.matchMedia("(hover: hover)").matches) {
+                card.addEventListener("mouseenter", () => {
+                    image.style.opacity = "0.2";
+                    plusIcon.style.opacity = "1";
+                });
+                card.addEventListener("mouseleave", () => {
+                    image.style.opacity = "1";
+                    plusIcon.style.opacity = "0";
+                });
+
+                // Increment only when clicking the plus icon
+                plusIcon.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    count++;
+                    showCount(count);
+                    localStorage.setItem(localKey, count);
+                    setCountColor("#F59E0B");
+                    saveToFirebase(count);
+                });
+            }
+            // Mobile/touch devices
+            else {
+                plusIcon.addEventListener("click", (event) => {
+                    event.stopPropagation();
                     count++;
                     showCount(count);
                     localStorage.setItem(localKey, count);
                     setCountColor("#F59E0B");
                     saveToFirebase(count);
 
-                    // Reset for next time
                     image.style.opacity = "1";
                     plusIcon.style.opacity = "0";
-                    mobileFirstTap = true;
-                }
-            });
+                });
+            }
         }
-    }
 
-    // Shared storage and Firebase doc for both desktop & mobile
-    const sharedLocalKey = "holy_mass_count";
-    const sharedFirebaseDoc = "holy mass";
+        // Melna's counters
+        setupCounter(
+            "melna-count-card",
+            "melna-card-image",
+            "melna-plus-icon",
+            "melna-count-loading",
+            "melna-count-value",
+            "melna_mass_count",
+            "holy mass",
+            "melna"
+        );
+        setupCounter(
+            "melna-count-card-mobile",
+            "melna-card-image-mobile",
+            "melna-plus-icon-mobile",
+            "melna-count-loading-mobile",
+            "melna-count-value-mobile",
+            "melna_mass_count",
+            "holy mass",
+            "melna"
+        );
+    </script>
+    <script type="module">
+        const { doc, getDoc, updateDoc } = window.firebaseFns;
+        const db = window.db;
 
-    setupCounter("count-card", "card-image", "plus-icon", "count-loading", "count-value", sharedLocalKey, sharedFirebaseDoc);
-    setupCounter("count-card-mobile", "card-image-mobile", "plus-icon-mobile", "count-loading-mobile", "count-value-mobile", sharedLocalKey, sharedFirebaseDoc);
-</script>
+        function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName, collectionName) {
+            const card = document.getElementById(cardId);
+            const image = document.getElementById(imageId);
+            const plusIcon = document.getElementById(plusIconId);
+            const loadingSpinner = document.getElementById(loadingId);
+            const countValue = document.getElementById(valueId);
 
+            let count = 0;
+            let mobileFirstTap = true;
 
+            function showLoading() {
+                loadingSpinner.classList.remove("hidden");
+                countValue.classList.add("hidden");
+            }
 
+            function showCount(value) {
+                countValue.textContent = value;
+                loadingSpinner.classList.add("hidden");
+                countValue.classList.remove("hidden");
+            }
 
+            function setCountColor(color) {
+                countValue.style.color = color;
+            }
 
+            // Show loading initially
+            showLoading();
 
+            // Load from Local Storage
+            if (localStorage.getItem(localKey)) {
+                count = parseInt(localStorage.getItem(localKey), 10);
+                showCount(count);
+            }
 
+            // Load from Firebase
+            async function loadFromFirebase() {
+                const ref = doc(db, collectionName, firebaseDocName);
+                try {
+                    const snapshot = await getDoc(ref);
+                    if (snapshot.exists()) {
+                        count = snapshot.data().count || 0;
+                        localStorage.setItem(localKey, count);
+                        showCount(count);
+                    } else {
+                        showCount(0);
+                    }
+                } catch (err) {
+                    console.error("Error fetching from Firebase:", err);
+                    showCount(count || 0);
+                }
+            }
+            loadFromFirebase();
 
+            // Save to Firebase
+            async function saveToFirebase(newCount) {
+                const ref = doc(db, collectionName, firebaseDocName);
+                try {
+                    await updateDoc(ref, { count: newCount });
+                    setCountColor("#34D399"); // green on success
+                    setTimeout(() => setCountColor("white"), 1000);
+                } catch (err) {
+                    console.error("Error saving to Firebase:", err);
+                    setCountColor("red");
+                }
+            }
 
+            // Event bindings (works for both desktop & mobile)
+            plusIcon.addEventListener("click", (event) => {
+                event.stopPropagation();
 
+                // Mobile double-tap behavior
+                if (!window.matchMedia("(hover: hover)").matches) {
+                    if (mobileFirstTap) {
+                        image.style.opacity = "0.2";
+                        plusIcon.style.opacity = "1";
+                        mobileFirstTap = false;
 
+                        setTimeout(() => {
+                            image.style.opacity = "1";
+                            plusIcon.style.opacity = "0";
+                            mobileFirstTap = true;
+                        }, 3000);
+                        return;
+                    }
+                }
 
+                // Increment
+                count++;
+                showCount(count);
+                localStorage.setItem(localKey, count);
+                setCountColor("#F59E0B"); // orange while saving
+                saveToFirebase(count);
 
+                // Reset visuals
+                image.style.opacity = "1";
+                plusIcon.style.opacity = "0";
+                mobileFirstTap = true;
+            });
+
+            // Hover effect for desktop
+            if (window.matchMedia("(hover: hover)").matches) {
+                card.addEventListener("mouseenter", () => {
+                    image.style.opacity = "0.2";
+                    plusIcon.style.opacity = "1";
+                });
+                card.addEventListener("mouseleave", () => {
+                    image.style.opacity = "1";
+                    plusIcon.style.opacity = "0";
+                });
+            }
+        }
+
+        // ✅ Rosary counter setup (desktop)
+        setupCounter(
+            "rosary-count-card",
+            "rosary-card-image",
+            "rosary-plus-icon",
+            "rosary-count-loading",
+            "rosary-count-value",
+            "rosary_count",
+            "rossary", // Firestore doc name
+            "abhi"     // Firestore collection name
+        );
+
+        // ✅ Rosary counter setup (mobile)
+        setupCounter(
+            "rosary-count-card-mobile",
+            "rosary-card-image-mobile",
+            "rosary-plus-icon-mobile",
+            "rosary-count-loading-mobile",
+            "rosary-count-value-mobile",
+            "rosary_count",
+            "rossary",
+            "abhi"
+        );
+    </script>
+    <script type="module">
+        const { doc, getDoc, updateDoc } = window.firebaseFns;
+        const db = window.db;
+
+        function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName, collectionName) {
+            const card = document.getElementById(cardId);
+            const image = document.getElementById(imageId);
+            const plusIcon = document.getElementById(plusIconId);
+            const loadingSpinner = document.getElementById(loadingId);
+            const countValue = document.getElementById(valueId);
+
+            let count = 0;
+            let mobileFirstTap = true;
+
+            function showLoading() {
+                loadingSpinner.classList.remove("hidden");
+                countValue.classList.add("hidden");
+            }
+
+            function showCount(value) {
+                countValue.textContent = value;
+                loadingSpinner.classList.add("hidden");
+                countValue.classList.remove("hidden");
+            }
+
+            function setCountColor(color) {
+                countValue.style.color = color;
+            }
+
+            // Show loading initially
+            showLoading();
+
+            // Load from Local Storage
+            if (localStorage.getItem(localKey)) {
+                count = parseInt(localStorage.getItem(localKey), 10);
+                showCount(count);
+            }
+
+            // Load from Firebase
+            async function loadFromFirebase() {
+                const ref = doc(db, collectionName, firebaseDocName);
+                try {
+                    const snapshot = await getDoc(ref);
+                    if (snapshot.exists()) {
+                        count = snapshot.data().count || 0;
+                        localStorage.setItem(localKey, count);
+                        showCount(count);
+                    } else {
+                        showCount(0);
+                    }
+                } catch (err) {
+                    console.error("Error fetching from Firebase:", err);
+                    showCount(count || 0);
+                }
+            }
+            loadFromFirebase();
+
+            // Save to Firebase
+            async function saveToFirebase(newCount) {
+                const ref = doc(db, collectionName, firebaseDocName);
+                try {
+                    await updateDoc(ref, { count: newCount });
+                    setCountColor("#34D399"); // green on success
+                    setTimeout(() => setCountColor("white"), 1000);
+                } catch (err) {
+                    console.error("Error saving to Firebase:", err);
+                    setCountColor("red");
+                }
+            }
+
+            // Event bindings (works for both desktop & mobile)
+            plusIcon.addEventListener("click", (event) => {
+                event.stopPropagation();
+
+                // Mobile double-tap behavior
+                if (!window.matchMedia("(hover: hover)").matches) {
+                    if (mobileFirstTap) {
+                        image.style.opacity = "0.2";
+                        plusIcon.style.opacity = "1";
+                        mobileFirstTap = false;
+
+                        setTimeout(() => {
+                            image.style.opacity = "1";
+                            plusIcon.style.opacity = "0";
+                            mobileFirstTap = true;
+                        }, 3000);
+                        return;
+                    }
+                }
+
+                // Increment
+                count++;
+                showCount(count);
+                localStorage.setItem(localKey, count);
+                setCountColor("#F59E0B"); // orange while saving
+                saveToFirebase(count);
+
+                // Reset visuals
+                image.style.opacity = "1";
+                plusIcon.style.opacity = "0";
+                mobileFirstTap = true;
+            });
+
+            // Hover effect for desktop
+            if (window.matchMedia("(hover: hover)").matches) {
+                card.addEventListener("mouseenter", () => {
+                    image.style.opacity = "0.2";
+                    plusIcon.style.opacity = "1";
+                });
+                card.addEventListener("mouseleave", () => {
+                    image.style.opacity = "1";
+                    plusIcon.style.opacity = "0";
+                });
+            }
+        }
+
+        // ✅ Melna Rosary counter setup (desktop)
+        setupCounter(
+            "melna-rosary-count-card",        // Card ID (desktop)
+            "melna-rosary-card-image",        // Image ID
+            "melna-rosary-plus-icon",         // Plus icon ID
+            "melna-rosary-count-loading",     // Loading spinner ID
+            "melna-rosary-count-value",       // Value text ID
+            "melna_rosary_count",             // LocalStorage key
+            "rossary",                        // Firestore doc name
+            "melna"                           // Firestore collection name
+        );
+
+        // ✅ Melna Rosary counter setup (mobile)
+        setupCounter(
+            "melna-rosary-count-card-mobile", // Card ID (mobile)
+            "melna-rosary-card-image-mobile", // Image ID
+            "melna-rosary-plus-icon-mobile",  // Plus icon ID
+            "melna-rosary-count-loading-mobile", // Loading spinner ID
+            "melna-rosary-count-value-mobile",   // Value text ID
+            "melna_rosary_count",              // LocalStorage key
+            "rossary",                         // Firestore doc name
+            "melna"                            // Firestore collection name
+        );
+    </script>
 </body>
 
 </html>
-
