@@ -396,105 +396,136 @@
         });
     </script>
     <script type="module">
-        const { doc, getDoc, updateDoc } = window.firebaseFns;
+    const { doc, getDoc, updateDoc } = window.firebaseFns;
 
-        function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName) {
-            const card = document.getElementById(cardId);
-            const image = document.getElementById(imageId);
-            const plusIcon = document.getElementById(plusIconId);
-            const loadingSpinner = document.getElementById(loadingId);
-            const countValue = document.getElementById(valueId);
+    function setupCounter(cardId, imageId, plusIconId, loadingId, valueId, localKey, firebaseDocName) {
+        const card = document.getElementById(cardId);
+        const image = document.getElementById(imageId);
+        const plusIcon = document.getElementById(plusIconId);
+        const loadingSpinner = document.getElementById(loadingId);
+        const countValue = document.getElementById(valueId);
 
-            if (!card) return; // Skip if element not present
+        if (!card) return;
 
-            let count = 0;
+        let count = 0;
+        let mobileFirstTap = true; // for mobile: first tap shows plus, second tap increments
 
-            function showLoading() {
-                loadingSpinner.classList.remove("hidden");
-                countValue.classList.add("hidden");
-            }
+        function showLoading() {
+            loadingSpinner.classList.remove("hidden");
+            countValue.classList.add("hidden");
+        }
 
-            function showCount(value) {
-                countValue.textContent = value;
-                loadingSpinner.classList.add("hidden");
-                countValue.classList.remove("hidden");
-            }
+        function showCount(value) {
+            countValue.textContent = value;
+            loadingSpinner.classList.add("hidden");
+            countValue.classList.remove("hidden");
+        }
 
-            function setCountColor(color) {
-                countValue.style.color = color;
-            }
+        function setCountColor(color) {
+            countValue.style.color = color;
+        }
 
-            // Show loading initially
-            showLoading();
+        // Show loading initially
+        showLoading();
 
-            // Load from Local Storage first
-            if (localStorage.getItem(localKey)) {
-                count = parseInt(localStorage.getItem(localKey), 10);
-                showCount(count);
-            }
+        // Load from Local Storage
+        if (localStorage.getItem(localKey)) {
+            count = parseInt(localStorage.getItem(localKey), 10);
+            showCount(count);
+        }
 
-            // Load from Firebase
-            async function loadFromFirebase() {
-                const ref = doc(window.db, "abhi", firebaseDocName);
-                try {
-                    const snapshot = await getDoc(ref);
-                    if (snapshot.exists()) {
-                        count = snapshot.data().value || 0;
-                        localStorage.setItem(localKey, count);
-                        showCount(count);
-                    } else {
-                        showCount(0);
-                    }
-                } catch (err) {
-                    console.error("Error fetching from Firebase:", err);
-                    showCount(count || 0);
+        // Load from Firebase
+        async function loadFromFirebase() {
+            const ref = doc(window.db, "abhi", firebaseDocName);
+            try {
+                const snapshot = await getDoc(ref);
+                if (snapshot.exists()) {
+                    count = snapshot.data().value || 0;
+                    localStorage.setItem(localKey, count);
+                    showCount(count);
+                } else {
+                    showCount(0);
                 }
+            } catch (err) {
+                console.error("Error fetching from Firebase:", err);
+                showCount(count || 0);
             }
-            loadFromFirebase();
+        }
+        loadFromFirebase();
 
-            // Save to Firebase
-            async function saveToFirebase(newCount) {
-                const ref = doc(window.db, "abhi", firebaseDocName);
-                try {
-                    await updateDoc(ref, { value: newCount });
-                    setCountColor("#34D399"); // green flash
-                    setTimeout(() => setCountColor("white"), 1000);
-                } catch (err) {
-                    console.error("Error saving to Firebase:", err);
-                    setCountColor("red"); // error red
-                }
+        // Save to Firebase
+        async function saveToFirebase(newCount) {
+            const ref = doc(window.db, "abhi", firebaseDocName);
+            try {
+                await updateDoc(ref, { value: newCount });
+                setCountColor("#34D399"); // green flash
+                setTimeout(() => setCountColor("white"), 1000);
+            } catch (err) {
+                console.error("Error saving to Firebase:", err);
+                setCountColor("red");
             }
+        }
 
-            // Hover effects (only for devices with mouse)
-            if (window.matchMedia("(hover: hover)").matches) {
-                card.addEventListener("mouseenter", () => {
-                    image.style.opacity = "0.2";
-                    plusIcon.style.opacity = "1";
-                });
-                card.addEventListener("mouseleave", () => {
-                    image.style.opacity = "1";
-                    plusIcon.style.opacity = "0";
-                });
-            }
+        // Hover effects for desktop
+        if (window.matchMedia("(hover: hover)").matches) {
+            card.addEventListener("mouseenter", () => {
+                image.style.opacity = "0.2";
+                plusIcon.style.opacity = "1";
+            });
+            card.addEventListener("mouseleave", () => {
+                image.style.opacity = "1";
+                plusIcon.style.opacity = "0";
+            });
 
-            // Click → increment
+            // Desktop click → increment immediately
             card.addEventListener("click", () => {
                 count++;
                 showCount(count);
                 localStorage.setItem(localKey, count);
-                setCountColor("#F59E0B"); // orange flash
+                setCountColor("#F59E0B");
                 saveToFirebase(count);
             });
+        } 
+        // Touch devices (mobile/tablet)
+        else {
+            card.addEventListener("click", () => {
+                if (mobileFirstTap) {
+                    // First tap: show plus without increment
+                    image.style.opacity = "0.2";
+                    plusIcon.style.opacity = "1";
+                    mobileFirstTap = false;
+
+                    // Hide plus if they don't click again within 3 sec
+                    setTimeout(() => {
+                        image.style.opacity = "1";
+                        plusIcon.style.opacity = "0";
+                        mobileFirstTap = true;
+                    }, 3000);
+                } else {
+                    // Second tap: increment
+                    count++;
+                    showCount(count);
+                    localStorage.setItem(localKey, count);
+                    setCountColor("#F59E0B");
+                    saveToFirebase(count);
+
+                    // Reset for next time
+                    image.style.opacity = "1";
+                    plusIcon.style.opacity = "0";
+                    mobileFirstTap = true;
+                }
+            });
         }
+    }
 
-        // Use the SAME key & doc for both desktop and mobile
-        const sharedLocalKey = "holy_mass_count";
-        const sharedFirebaseDoc = "holy mass";
+    // Shared storage and Firebase doc for both desktop & mobile
+    const sharedLocalKey = "holy_mass_count";
+    const sharedFirebaseDoc = "holy mass";
 
-        // Setup desktop and mobile with shared storage
-        setupCounter("count-card", "card-image", "plus-icon", "count-loading", "count-value", sharedLocalKey, sharedFirebaseDoc);
-        setupCounter("count-card-mobile", "card-image-mobile", "plus-icon-mobile", "count-loading-mobile", "count-value-mobile", sharedLocalKey, sharedFirebaseDoc);
-    </script>
+    setupCounter("count-card", "card-image", "plus-icon", "count-loading", "count-value", sharedLocalKey, sharedFirebaseDoc);
+    setupCounter("count-card-mobile", "card-image-mobile", "plus-icon-mobile", "count-loading-mobile", "count-value-mobile", sharedLocalKey, sharedFirebaseDoc);
+</script>
+
 
 
 
@@ -510,3 +541,4 @@
 </body>
 
 </html>
+
