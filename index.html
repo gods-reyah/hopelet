@@ -557,7 +557,7 @@
             <div id="mobilePanels" class="w-full h-full flex transition-transform duration-500 ease-in-out">
                 <div id="panelWrapper" class="relative overflow-hidden">
 
-                    <div id="abhiPanel">
+                    <div id="abhiPanel" class="transition-opacity duration-500 opacity-100">
                         <!-- Panel 1: Abhi's Panel -->
                         <div class="min-w-full p-4 bg-gradient-to-br from-pink-400 to-purple-500 flex flex-col">
                             <!-- Abhi Box at Top -->
@@ -697,7 +697,7 @@
                         </div>
                     </div>
 
-                    <div id="melnaPanel" class="hidden">
+                    <div id="melnaPanel" class="transition-opacity duration-500 opacity-0 hidden">
                         <!-- Panel 2: Melna's Panel -->
                         <div class="min-w-full p-4 bg-gradient-to-br from-pink-400 to-purple-500 flex flex-col">
                             <div class="w-full">
@@ -1130,6 +1130,50 @@
                 }
             }
         </style>
+        <script>
+            const wrapper = document.getElementById("panelWrapper");
+            const abhiPanel = document.getElementById("abhiPanel");
+            const melnaPanel = document.getElementById("melnaPanel");
+
+            let currentPanel = "abhi";
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            wrapper.addEventListener("touchstart", (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            wrapper.addEventListener("touchend", (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const distance = touchEndX - touchStartX;
+
+                if (Math.abs(distance) < 50) return; // Ignore short swipes
+
+                if (distance < 0 && currentPanel === "abhi") {
+                    // Swipe Left → Melna
+                    abhiPanel.classList.add("hidden");
+                    melnaPanel.classList.remove("hidden");
+                    currentPanel = "melna";
+                } else if (distance > 0 && currentPanel === "melna") {
+                    // Swipe Right → Abhi
+                    melnaPanel.classList.add("hidden");
+                    abhiPanel.classList.remove("hidden");
+                    currentPanel = "abhi";
+                }
+            }
+            abhiPanel.classList.replace("opacity-100", "opacity-0");
+            abhiPanel.classList.add("hidden");
+
+            melnaPanel.classList.remove("hidden");
+            melnaPanel.classList.replace("opacity-0", "opacity-100");
+
+        </script>
+
 
         <script type="module">
             const { doc, getDoc, setDoc, updateDoc } = window.firebaseFns;
